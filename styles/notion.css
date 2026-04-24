@@ -25,10 +25,6 @@
   --notion-max-width: min(1600px, 96vw);
 }
 
-.index-page.notion-page,
-.index-page .notion-page-content {
-  max-width: min(1600px, 96vw) !important;
-}
 
 .notion-page-cover-wrapper,
 .notion-page-cover-wrapper span,
@@ -414,4 +410,12 @@
 
 .notion-equation.notion-equation-block{
   align-items: center;
+}
+
+.index-page .notion-column:first-child {
+  flex: 0 0 260px !important;
+}
+
+.index-page .notion-column:last-child {
+  flex: 1 1 auto !important;
 }
