@@ -532,27 +532,27 @@
   }
 }
 
-/* Icon beside title */
+/* Move big page icon next to / above the left-aligned title */
 .notion-page-icon-hero {
-  display: inline-flex !important;
-  align-items: center !important;
-  width: auto !important;
-  margin: 24px 12px 0 4vw !important;
-  padding: 0 !important;
-  vertical-align: middle !important;
+  display: block !important;
+  width: var(--site-content-width) !important;
+  max-width: var(--site-content-width) !important;
+  margin: 24px auto 8px auto !important;
+  padding-left: 4vw !important;
+  padding-right: 4vw !important;
+  text-align: left !important;
   transform: none !important;
 }
 
 .notion .notion-page-icon-cover {
-  margin: 0 !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+  margin-bottom: 8px !important;
   position: relative !important;
   left: 0 !important;
   transform: none !important;
 }
 
 .notion-title {
-  display: inline-block !important;
-  vertical-align: middle !important;
-  margin-top: 24px !important;
-  padding-left: 0 !important;
+  margin-top: 0 !important;
 }
