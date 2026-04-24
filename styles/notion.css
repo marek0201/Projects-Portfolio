@@ -7,9 +7,17 @@
  * places to add some flare.
  */
 
+:root {
+  --site-content-width: min(1600px, 96vw);
+}
+
 .notion {
-  --notion-max-width: min(1600px, 96vw);
+  --notion-max-width: var(--site-content-width);
   --notion-header-height: 54px;
+}
+
+.index-page {
+  --notion-max-width: var(--site-content-width);
 }
 
 .notion-frame {
@@ -21,15 +29,11 @@
   line-height: 1.65;
 }
 
-.index-page {
-  --notion-max-width: min(1600px, 96vw);
-}
-
 
 .notion-page-cover-wrapper,
 .notion-page-cover-wrapper span,
 .notion-page-cover-wrapper img {
-  max-width: min(1600px, 96vw) !important;
+  max-width: var(--site-content-width) !important;
   border-radius: 24px;
 }
 
@@ -202,7 +206,7 @@
 .notion-page-cover-wrapper,
 .notion-page-cover-wrapper span,
 .notion-page-cover-wrapper img {
-  max-width: 1200px !important;
+  max-width: var(--site-content-width) !important;
   border-radius: 24px;
 }
 
