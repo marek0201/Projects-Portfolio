@@ -25,6 +25,18 @@
   --notion-max-width: min(1600px, 96vw);
 }
 
+.index-page.notion-page,
+.index-page .notion-page-content {
+  max-width: min(1600px, 96vw) !important;
+}
+
+.notion-page-cover-wrapper,
+.notion-page-cover-wrapper span,
+.notion-page-cover-wrapper img {
+  max-width: min(1600px, 96vw) !important;
+  border-radius: 24px;
+}
+
 .notion-text {
   padding: 0.5em 2px;
 }
