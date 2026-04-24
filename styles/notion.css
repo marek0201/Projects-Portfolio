@@ -32,9 +32,13 @@
 
 .notion-page-cover-wrapper,
 .notion-page-cover-wrapper span,
-.notion-page-cover-wrapper img {
-  max-width: var(--site-content-width) !important;
-  border-radius: 24px;
+/* Even image gallery sizing */
+.notion-page .notion-asset-wrapper-image img {
+  width: 100% !important;
+  height: 260px !important;
+  object-fit: contain !important;
+  background: #f7f7f7;
+  border-radius: 12px;
 }
 
 .notion-text {
