@@ -65,11 +65,7 @@
   gap: 0.5rem;
 }
 
-.notion-gallery-grid {
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-  grid-gap: 6vmin;
-  gap: 6vmin;
-}
+/* Gallery grid sizing is controlled in FINAL LAYOUT OVERRIDES below. */
 
 .notion-gallery-grid .notion-page-icon-inline {
   display: none;
@@ -173,15 +169,7 @@
   }
 }
 
-.notion .notion-page-icon-cover {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.notion-title {
-  display: block;
-  text-align: center;
-}
+/* Page icon/title alignment is controlled in FINAL LAYOUT OVERRIDES below. */
 
 .notion-collection-row {
   padding-bottom: 1em;
@@ -416,58 +404,123 @@
   align-items: center;
 }
 
-/* Force homepage to behave like a full-width Notion page */
-.notion.index-page,
+
+/* ==========================================================
+   FINAL LAYOUT OVERRIDES
+   - Same width on Home, Projects, About, and project pages
+   - Page icon and title align to the left edge of page content
+   - Homepage project cards stay large
+   - Files/media galleries inside project pages stay smaller
+   ========================================================== */
+
+:root {
+  --site-content-width: min(1600px, 96vw);
+  --site-side-padding: 4vw;
+}
+
+.notion {
+  --notion-max-width: var(--site-content-width);
+}
+
+.index-page {
+  --notion-max-width: var(--site-content-width);
+}
+
+/* Main page wrappers: use the same width everywhere. */
+.notion-page,
+.notion-page .notion-page-content,
+.notion-page .notion-page-content-inner,
 .index-page.notion-page,
 .index-page .notion-page-content,
 .index-page .notion-page-content-inner {
-  width: 100% !important;
-  max-width: none !important;
+  max-width: var(--site-content-width) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
-/* Re-create a nice page margin instead of the starter kit max-width */
-.index-page .notion-page-content {
-  padding-left: 4vw !important;
-  padding-right: 4vw !important;
+/* Consistent readable margin on all pages. */
+.notion-page .notion-page-content {
+  padding-left: var(--site-side-padding) !important;
+  padding-right: var(--site-side-padding) !important;
 }
 
-/* Homepage columns: allow them to actually use the available width */
+/* Let the homepage columns use the full shared width, without becoming wider than other pages. */
 .index-page .notion-column-list {
   width: 100% !important;
   max-width: none !important;
 }
 
-/* Reduce react-notion-x column compression */
 .index-page .notion-column {
   max-width: none !important;
 }
 
-/* Center normal project pages and keep header/body aligned */
-.notion-page:not(.index-page) .notion-page-content {
-  max-width: min(1200px, 92vw) !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
+/* Covers match the content width. */
+.notion-page-cover-wrapper,
+.notion-page-cover-wrapper span,
+.notion-page-cover-wrapper img {
+  max-width: var(--site-content-width) !important;
 }
 
-/* Keep image/file galleries aligned with the same content width */
-.notion-page:not(.index-page) .notion-asset-wrapper,
-.notion-page:not(.index-page) .notion-collection,
-.notion-page:not(.index-page) .notion-collection-view,
-.notion-page:not(.index-page) .notion-gallery-grid {
-  max-width: min(1200px, 92vw) !important;
-  margin-left: auto !important;
+/* Left-align the large page icon and page title with content. */
+.notion .notion-page-icon-cover {
+  margin-left: 0 !important;
   margin-right: auto !important;
 }
 
-/* Your Notion "Files & media" block */
-.notion-page:not(.index-page) .notion-gallery-grid {
-  justify-content: center;
+.notion-page-icon-hero {
+  display: block !important;
+  width: 100% !important;
+  max-width: var(--site-content-width) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: var(--site-side-padding) !important;
+  padding-right: var(--site-side-padding) !important;
+  text-align: left !important;
 }
 
-/* Smaller media gallery inside project pages */
+.notion-title {
+  display: block !important;
+  width: 100% !important;
+  max-width: var(--site-content-width) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: var(--site-side-padding) !important;
+  padding-right: var(--site-side-padding) !important;
+  text-align: left !important;
+}
+
+/* Homepage/Projects overview cards: large, portfolio-style. */
+.index-page .notion-gallery-grid {
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)) !important;
+  grid-gap: 6vmin !important;
+  gap: 6vmin !important;
+}
+
+/* Files/media galleries inside individual project pages: compact thumbnails. */
 .notion-page:not(.index-page) .notion-gallery-grid {
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)) !important;
   gap: 16px !important;
+  justify-content: center !important;
+}
+
+/* Keep collections and media blocks aligned with the page body. */
+.notion-page .notion-asset-wrapper,
+.notion-page .notion-collection,
+.notion-page .notion-collection-view,
+.notion-page .notion-gallery-grid {
+  max-width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Mobile: reduce side padding so content has more room. */
+@media only screen and (max-width: 720px) {
+  :root {
+    --site-side-padding: 2vw;
+  }
+
+  .index-page .notion-gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)) !important;
+    gap: 24px !important;
+  }
 }
