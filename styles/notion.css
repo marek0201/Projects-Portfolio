@@ -182,10 +182,6 @@
   display: none;
 }
 
-.notion-collection-row-property .notion-property {
-  display: flex;
-  justify-content: center;
-}
 
 .notion-collection-row-value {
   display: flex;
@@ -555,4 +551,52 @@
   vertical-align: middle !important;
   margin-top: 24px !important;
   padding-left: 0 !important;
+}
+
+/* ==========================================================
+   Align project page header content
+   ========================================================== */
+
+/* Keep title, description, tags, thesis text, and thumbnails on same left edge */
+.notion-title,
+.notion-collection-page-properties,
+.notion-collection-row,
+.notion-collection-row-value,
+.notion-collection-row-property,
+.notion-collection-row-property .notion-property {
+  text-align: left !important;
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
+}
+
+/* Make page properties use the same content width as the page body */
+.notion-collection-page-properties {
+  max-width: var(--site-content-width) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 4vw !important;
+  padding-right: 4vw !important;
+}
+
+/* Prevent property values from becoming centered */
+.notion-collection-row-value {
+  display: flex !important;
+  justify-content: flex-start !important;
+}
+
+/* Tags should wrap from the left */
+.notion-property-multi_select,
+.notion-property-select,
+.notion-property-text,
+.notion-property-file {
+  justify-content: flex-start !important;
+  text-align: left !important;
+}
+
+/* Image/file thumbnail row in the header */
+.notion-collection-row-property .notion-property-file,
+.notion-collection-row-property .notion-property-files {
+  display: flex !important;
+  justify-content: flex-start !important;
+  flex-wrap: wrap !important;
 }
