@@ -65,7 +65,11 @@
   gap: 0.5rem;
 }
 
-/* Gallery grid sizing is controlled in FINAL LAYOUT OVERRIDES below. */
+.notion-gallery-grid {
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  grid-gap: 6vmin;
+  gap: 6vmin;
+}
 
 .notion-gallery-grid .notion-page-icon-inline {
   display: none;
@@ -169,7 +173,6 @@
   }
 }
 
-/* Page icon/title alignment is controlled in FINAL LAYOUT OVERRIDES below. */
 
 .notion-collection-row {
   padding-bottom: 1em;
@@ -404,13 +407,12 @@
   align-items: center;
 }
 
-
 /* ==========================================================
-   FINAL LAYOUT OVERRIDES
-   - Same width on Home, Projects, About, and project pages
-   - Page icon and title align to the left edge of page content
-   - Homepage project cards stay large
-   - Files/media galleries inside project pages stay smaller
+   FINAL SAME-WIDTH LAYOUT
+   - Home, Projects, About, and individual project pages share one width
+   - Big page icon + title align to the left edge of that same width
+   - Homepage/project overview cards stay large
+   - Files/media galleries inside project pages stay compact
    ========================================================== */
 
 :root {
@@ -418,50 +420,56 @@
   --site-side-padding: 4vw;
 }
 
-.notion {
-  --notion-max-width: var(--site-content-width);
-}
-
+.notion,
 .index-page {
-  --notion-max-width: var(--site-content-width);
+  --notion-max-width: var(--site-content-width) !important;
+  --notion-header-height: 54px;
 }
 
-/* Main page wrappers: use the same width everywhere. */
+/* Do not let the homepage escape wider than the other pages,
+   and do not let subpages fall back to the old narrow 720/900/1200px widths. */
 .notion-page,
-.notion-page .notion-page-content,
-.notion-page .notion-page-content-inner,
 .index-page.notion-page,
+.notion-page .notion-page-content,
 .index-page .notion-page-content,
-.index-page .notion-page-content-inner {
+.notion-page .notion-page-content-inner,
+.index-page .notion-page-content-inner,
+.notion-collection,
+.notion-collection-view,
+.notion-gallery-grid,
+.notion-asset-wrapper {
+  width: 100% !important;
   max-width: var(--site-content-width) !important;
   margin-left: auto !important;
   margin-right: auto !important;
 }
 
-/* Consistent readable margin on all pages. */
-.notion-page .notion-page-content {
+/* Same page side margin everywhere. */
+.notion-page .notion-page-content,
+.index-page .notion-page-content {
   padding-left: var(--site-side-padding) !important;
   padding-right: var(--site-side-padding) !important;
 }
 
-/* Let the homepage columns use the full shared width, without becoming wider than other pages. */
-.index-page .notion-column-list {
+/* Keep the Notion column layouts using the same full shared width. */
+.notion-column-list {
   width: 100% !important;
   max-width: none !important;
 }
 
-.index-page .notion-column {
+.notion-column {
   max-width: none !important;
 }
 
-/* Covers match the content width. */
+/* Covers match the same page width. */
 .notion-page-cover-wrapper,
 .notion-page-cover-wrapper span,
 .notion-page-cover-wrapper img {
+  width: 100% !important;
   max-width: var(--site-content-width) !important;
 }
 
-/* Left-align the large page icon and page title with content. */
+/* Left-align large page icon and title with page content. */
 .notion .notion-page-icon-cover {
   margin-left: 0 !important;
   margin-right: auto !important;
@@ -489,37 +497,36 @@
   text-align: left !important;
 }
 
-/* Homepage/Projects overview cards: large, portfolio-style. */
-.index-page .notion-gallery-grid {
+/* Overview galleries: same width on Home and Projects pages. */
+.index-page .notion-gallery-grid,
+.notion-page .notion-collection .notion-gallery-grid {
   grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)) !important;
   grid-gap: 6vmin !important;
   gap: 6vmin !important;
 }
 
-/* Files/media galleries inside individual project pages: compact thumbnails. */
-.notion-page:not(.index-page) .notion-gallery-grid {
+/* Compact media galleries on individual project pages.
+   If this makes your Projects overview smaller too, delete this block. */
+.notion-page:not(.index-page) .notion-asset-wrapper + .notion-collection .notion-gallery-grid,
+.notion-page:not(.index-page) .notion-gallery-grid.notion-gallery-grid-size-small {
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)) !important;
   gap: 16px !important;
-  justify-content: center !important;
 }
 
-/* Keep collections and media blocks aligned with the page body. */
-.notion-page .notion-asset-wrapper,
-.notion-page .notion-collection,
-.notion-page .notion-collection-view,
-.notion-page .notion-gallery-grid {
-  max-width: 100% !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
-
-/* Mobile: reduce side padding so content has more room. */
+/* Mobile. */
 @media only screen and (max-width: 720px) {
   :root {
     --site-side-padding: 2vw;
   }
 
-  .index-page .notion-gallery-grid {
+  .notion-page .notion-page-content,
+  .index-page .notion-page-content {
+    padding-left: var(--site-side-padding) !important;
+    padding-right: var(--site-side-padding) !important;
+  }
+
+  .index-page .notion-gallery-grid,
+  .notion-page .notion-collection .notion-gallery-grid {
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)) !important;
     gap: 24px !important;
   }
