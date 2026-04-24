@@ -412,10 +412,28 @@
   align-items: center;
 }
 
-.index-page .notion-column:first-child {
-  flex: 0 0 260px !important;
+/* Force homepage to behave like a full-width Notion page */
+.notion.index-page,
+.index-page.notion-page,
+.index-page .notion-page-content,
+.index-page .notion-page-content-inner {
+  width: 100% !important;
+  max-width: none !important;
 }
 
-.index-page .notion-column:last-child {
-  flex: 1 1 auto !important;
+/* Re-create a nice page margin instead of the starter kit max-width */
+.index-page .notion-page-content {
+  padding-left: 4vw !important;
+  padding-right: 4vw !important;
+}
+
+/* Homepage columns: allow them to actually use the available width */
+.index-page .notion-column-list {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+/* Reduce react-notion-x column compression */
+.index-page .notion-column {
+  max-width: none !important;
 }
