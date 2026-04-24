@@ -600,3 +600,9 @@
   justify-content: flex-start !important;
   flex-wrap: wrap !important;
 }
+
+/* Align project page title with description/properties */
+.notion-title {
+  padding-left: calc(4vw + 100px) !important;
+  padding-right: 4vw !important;
+}
