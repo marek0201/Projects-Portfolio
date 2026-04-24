@@ -61,7 +61,7 @@
   gap: 0.5rem;
 }
 
-.notion-gallery-grid {
+.index-page .notion-gallery-grid {
   grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
   grid-gap: 6vmin;
   gap: 6vmin;
@@ -436,4 +436,34 @@
 /* Reduce react-notion-x column compression */
 .index-page .notion-column {
   max-width: none !important;
+}
+
+/* Center normal project pages and keep header/body aligned */
+.notion-page:not(.index-page) .notion-page-content {
+  max-width: min(1200px, 92vw) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Keep image/file galleries aligned with the same content width */
+.notion-page:not(.index-page) .notion-asset-wrapper,
+.notion-page:not(.index-page) .notion-collection,
+.notion-page:not(.index-page) .notion-collection-view,
+.notion-page:not(.index-page) .notion-gallery-grid {
+  max-width: min(1200px, 92vw) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Your Notion "Files & media" block */
+.notion-page:not(.index-page) .notion-gallery-grid {
+  justify-content: center;
+}
+
+/* Smaller media gallery inside project pages */
+.notion-page:not(.index-page) .notion-gallery-grid {
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)) !important;
+  gap: 16px !important;
 }
