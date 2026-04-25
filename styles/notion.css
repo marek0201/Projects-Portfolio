@@ -749,9 +749,4 @@
 }
 
 
-/* Contact text should not be vertically offset */
-.index-page .notion-column:first-child .notion-callout .notion-text {
-  margin: 0 !important;
-  padding: 0 !important;
-  align-items: center !important;
-}
+
