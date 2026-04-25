@@ -693,3 +693,44 @@
   background: transparent !important;
   border-radius: 0 !important;
 }
+
+/* ==========================================================
+   Sidebar / navigation card alignment
+   ========================================================== */
+
+/* The left column cards */
+.index-page .notion-column:first-child .notion-callout {
+  padding: 22px 24px !important;
+}
+
+/* Rows inside the nav/contact cards */
+.index-page .notion-column:first-child .notion-page-link,
+.index-page .notion-column:first-child .notion-text {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+}
+
+/* Icons */
+.index-page .notion-column:first-child .notion-page-icon-inline,
+.index-page .notion-column:first-child .notion-page-icon,
+.index-page .notion-column:first-child .notion-property-icon {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  flex: 0 0 20px !important;
+  width: 20px !important;
+  min-width: 20px !important;
+}
+
+/* Links/text start at same x-position */
+.index-page .notion-column:first-child .notion-page-title-text,
+.index-page .notion-column:first-child .notion-link {
+  margin-left: 0 !important;
+}
+
+/* Divider spacing inside the sidebar cards */
+.index-page .notion-column:first-child .notion-hr {
+  margin: 22px 0 !important;
+}
