@@ -8,7 +8,7 @@
  */
 
 :root {
-  --site-content-width: min(2600px, 96vw);
+  --site-content-width: min(2800px, 96vw);
 }
 
 .notion {
@@ -416,7 +416,7 @@
    ========================================================== */
 
 :root {
-  --site-content-width: min(2600px, 96vw);
+  --site-content-width: min(2800px, 96vw);
   --site-side-padding: 4vw;
 }
 
