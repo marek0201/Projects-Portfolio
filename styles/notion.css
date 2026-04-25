@@ -694,7 +694,19 @@
   border-radius: 0 !important;
 }
 
+/* ==========================================================
+   Fix cut-off gallery cards and shadows
+   ========================================================== */
+.notion-collection,
+.notion-collection-view {
+  overflow: visible !important;
+}
 
+.notion-gallery-grid {
+  overflow: visible !important;
+  box-sizing: border-box !important;
+  padding: 12px !important; /* Gives the borders and shadows room to breathe */
+}
 
 
 
