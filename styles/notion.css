@@ -680,3 +680,16 @@
   height: auto !important;
   object-fit: contain !important;
 }
+
+/* Match image block background to page background */
+.notion-page .notion-asset-wrapper-image,
+.notion-page .notion-asset-wrapper-image > div,
+.notion-page .notion-asset-wrapper-image span {
+  background: var(--bg-color) !important;
+}
+
+/* Keep image itself clean */
+.notion-page .notion-asset-wrapper-image img {
+  background: transparent !important;
+  border-radius: 0 !important;
+}
