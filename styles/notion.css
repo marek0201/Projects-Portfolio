@@ -748,18 +748,6 @@
   gap: 14px !important;
 }
 
-/* Contact icon sizing and alignment */
-.index-page .notion-column:first-child .notion-callout .notion-page-icon,
-.index-page .notion-column:first-child .notion-callout .notion-page-icon-inline,
-.index-page .notion-column:first-child .notion-callout .notion-property-icon {
-  width: 20px !important;
-  min-width: 20px !important;
-  height: 20px !important;
-  margin: 0 !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
 
 /* Contact text should not be vertically offset */
 .index-page .notion-column:first-child .notion-callout .notion-text {
