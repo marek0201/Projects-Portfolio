@@ -631,3 +631,52 @@
   font-size: 1.45rem !important;
   line-height: 1.25 !important;
 }
+
+/* ==========================================================
+   Flexible inline image gallery
+   ========================================================== */
+
+/* Keep images inside page content flexible */
+.notion-page .notion-asset-wrapper-image {
+  max-width: 100% !important;
+  margin: 1.25rem 0 !important;
+}
+
+/* Inline images: same visual height, no cropping */
+.notion-page .notion-asset-wrapper-image img {
+  max-width: 100% !important;
+  max-height: 320px !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+  border-radius: 12px;
+}
+
+/* If images are inside columns, let each column center its image */
+.notion-page .notion-column .notion-asset-wrapper-image {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+/* Give side-by-side images similar visual boxes */
+.notion-page .notion-column .notion-asset-wrapper-image img {
+  width: 100% !important;
+  height: 300px !important;
+  object-fit: contain !important;
+}
+
+/* ==========================================================
+   Fix image preview / lightbox zoom size
+   ========================================================== */
+
+.notion-asset-wrapper-image-full,
+.notion-image-full,
+.notion-image-full img,
+.medium-zoom-image--opened {
+  max-width: 90vw !important;
+  max-height: 85vh !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+}
